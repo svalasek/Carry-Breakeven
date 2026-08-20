@@ -1,0 +1,14 @@
+# Cost/rate sensitivity assumptions, fixed before looking at the breakeven results.
+
+target_net_sharpe: 1.0   # the "survivable" bar -- how good does the strategy need to remain, after costs
+
+transaction_cost:
+  grid_bps_round_trip: [0, 5, 10, 20, 30, 50, 75, 100]   # round-trip cost per holding period, in bps
+  quarterly_holding_days: 91     # basis leg rolls ~4x/year -- cost is amortized over one roll
+  funding_holding_days: 365      # funding leg modeled as enter-once/hold-a-year/exit-once (conservative:
+                                  # real desks may rebalance the hedge more often, which only makes costs worse)
+
+financing:
+  grid_annualized_rate: [0.00, 0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.15]
+  capital_multiplier: 1.0   # financing drag = rate * capital_multiplier, applied to notional as a
+                              # simplifying proxy for the opportunity cost of capital tied up in both legs

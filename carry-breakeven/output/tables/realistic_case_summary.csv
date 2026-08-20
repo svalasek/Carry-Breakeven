@@ -1,0 +1,5 @@
+leg,pair,actual_gross_sharpe,required_gross_sharpe_at_20bps_5pct,survives
+quarterly_basis,BTCUSDT,0.926136915056616,1.6988040871088799,False
+perp_funding,BTCUSDT,1.6927416381771012,1.7550927932831604,False
+quarterly_basis,ETHUSDT,0.8043192658833127,1.6120404722972042,False
+perp_funding,ETHUSDT,1.455050064185419,1.5411219219692904,False
