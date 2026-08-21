@@ -146,7 +146,6 @@ tightening-rate environment, is the difference between a viable and non-viable s
 ---
 
 ## Limitations
-
 - **Costs are modeled as a pure mean drag, not a volatility source.** In reality, variable
   slippage and financing-rate volatility would add some noise on top of the level effect
   modeled here — a second-order simplification.
@@ -160,6 +159,16 @@ tightening-rate environment, is the difference between a viable and non-viable s
 - **No execution/slippage modeling beyond a flat bps assumption** — real fills would vary
   with order size and market depth, especially during the funding-rate regime shifts that
   matter most for this analysis.
+- **The strategy is static, never flipping to a reverse cash-and-carry during backwardation.**
+  Both legs stay long spot/short the derivative even in the two backwardation quarters and
+  ~13-15% of negative funding periods found in the data, rather than switching to
+  short-spot/long-future to capture convergence from the other side. That's the textbook-correct
+  move on paper, but modeling it well isn't free: shorting spot requires locating a borrow, and
+  spot-borrow rates spike (or dry up) precisely in those stressed conditions — both backwardation
+  quarters here were Q3/Q4 2022, in the FTX collapse that produced backwardation in the first
+  place. The magnitudes involved (~0.1-0.2% basis) may not clear that extra friction. A 
+  regime-switching version would also become a timing strategy rather than a static carry-harvesting
+  one, and would need its own out-of-sample validation rather than being assumed to work.
 
 ---
 
