@@ -107,7 +107,7 @@ required_gross_sharpe = target_net_sharpe + (txn_drag + financing_drag) / gross_
 
 Transaction cost is a round-trip fee/slippage assumption (0–100 bps), amortized over each
 leg's natural holding period (~91 days for the quarterly roll; a full year for the
-buy-and-hold funding position — a conservative choice, since more frequent rebalancing
+buy-and-hold funding position — a lower bound, since more frequent rebalancing
 would only make costs worse, not better). Financing cost is an annualized rate applied
 directly to capital deployed. Target net Sharpe is fixed at **1.0** before looking at any results.
 
